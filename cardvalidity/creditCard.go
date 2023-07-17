@@ -7,12 +7,13 @@ import (
 var beginningChars map[string]bool
 var validChars map[string]bool
 
+// Initializes the lists once
 func InitializeLists() {
 	beginningChars = map[string]bool{"4": false, "5": false, "6": false}
 	validChars = map[string]bool{"0": false, "1": false, "2": false, "3": false, "4": false, "5": false, "6": false, "7": false, "8": false, "9": false}
 }
 
-// this string was called validCard in the hackerRank system
+// this string was called validCard in the hackerRank problem
 func ValidateCard(card string) string {
 
 	if len(beginningChars) == 0 {
@@ -42,8 +43,8 @@ func ValidateCard(card string) string {
 	if len(myCard) != 16 {
 		return "Invalid"
 	}
-	prev, numTimes := "", 0
 
+	prev, numTimes := "", 0
 	for _, chrune := range myCard {
 		ch := string(chrune)
 		if _, ok := validChars[ch]; !ok {
@@ -59,5 +60,6 @@ func ValidateCard(card string) string {
 		}
 		prev = ch
 	}
+
 	return "Valid"
 }
